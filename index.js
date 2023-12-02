@@ -148,46 +148,6 @@ const bot_creator = ({ username, pass, home, auth }) => {
             }
         }
 
-        /* faz os bots enviarem o dinheiro
-        else if (message.content.startsWith(`!pay`)) {
-            let split = message.content.split(' ');
-        
-            if (split[1] == bot.username || split[1] == 'all') {
-                if (bot.location !== 'home') {
-                    channel.send(`${username} não está na home, aguarde um momento`);
-                    return;
-                } else {
-                    let index = split.length - 2;
-                    split = split.splice(2, index);
-                    split = split.join(' ');
-                    bot.chat('/money balance');
-        
-                    bot.once('message', (balanceMessage) => {
-                        const balanceRegex = /\$([\d,.]+)/;
-                        const match = balanceMessage.toString().match(balanceRegex);
-        
-                        if (match) {
-                            const balanceString = match[1].replace(',', '');
-                            const balance = parseFloat(balanceString);
-                            if (!isNaN(balance)) {
-                                const payAmount = Math.floor(balance / 2);
-                                setTimeout(() => {
-                                    bot.chat(`/pay NekoLuke ${payAmount}`);
-                                }, 5000);
-                                bot.once('message', (payMessage) => {
-                                    channel.send(` [GladMC] ${username} executou /pay NekoFarm ${payAmount}: ${payMessage}`);
-                                });
-                            } else {
-                                channel.send(`Erro ao obter o saldo. Tente novamente.`);
-                            }
-                        } else {
-                            channel.send(`Erro ao analisar a resposta do comando /money balance.`);
-                        }
-                    });
-                }
-            } 
-        }*/
-
         // Verifica o money dos bots
         else if (message.content.startsWith(`!balance`)) {
             let split = message.content.split(' ')

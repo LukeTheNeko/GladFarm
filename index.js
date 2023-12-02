@@ -96,6 +96,7 @@ const bot_creator = ({ username, pass, home, auth }) => {
             }
         }
 
+        /*
         // Vai para pw de drop com o bot (configure a sua)
         else if (message.content.startsWith('!pwdrop')) {
             let split = message.content.split(' ');
@@ -146,7 +147,8 @@ const bot_creator = ({ username, pass, home, auth }) => {
                     }
                 }
             }
-        }
+        } 
+        */
 
         // Verifica o money dos bots
         else if (message.content.startsWith(`!balance`)) {

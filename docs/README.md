@@ -1,6 +1,10 @@
-<summary># Gladmc BOT</summary>
-<p>Um BOT simples e leve para farmar AFK sem precisar abrir várias abas de Minecraft em seu computador.</p>
+<div align="center">
+    <img src="./imgs/gladbot.png" alt="" height="145">
+</div>
+<br>
+<br>
 
+<p>Um BOT simples e leve para farmar AFK sem precisar abrir várias abas de Minecraft em seu computador.</p>
 
 ## Como Usar:
 

@@ -1,11 +1,11 @@
-const mineflayer = require('mineflayer')
-const utils = require('./src/events/utils');
-var colors = require('colors');
-const fs = require('fs');
+const client = new Client({ intents: 3276799 });
 const { Client } = require('discord.js')
 const Discord = require('discord.js');
-const client = new Client({ intents: 3276799 });
+const mineflayer = require('mineflayer')
+const utils = require('./src/events/utils');
 const config = require('./config.json');
+var colors = require('colors');
+const fs = require('fs');
 
 let token = config.token;
 let channel = config.channel;

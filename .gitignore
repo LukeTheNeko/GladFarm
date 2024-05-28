@@ -6,3 +6,5 @@ index.txt
 indexnew.txt
 config.json
 package-lock.json
+.env.development
+.env

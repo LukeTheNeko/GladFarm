@@ -20,6 +20,7 @@ npm install fs --no-fund > nul
 npm install math --no-fund > nul
 npm install mineflayer --no-fund > nul
 npm install moment --no-fund > nul
+npm install dotenv --no-fund > nul
    
 cls
 color 0A

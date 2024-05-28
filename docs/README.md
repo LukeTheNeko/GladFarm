@@ -60,13 +60,13 @@ Escolha um grupo e adicione o BOT
 <details>
 <summary>## Passo 3: Configuração</summary>
 
-<p>Para começar, edite o arquivo `config.json.example` para `config.json`. Em seguida, abra o arquivo e configure com os dados do seu BOT.</p>
+<p>Para começar, edite o arquivo `.env.example` para `.env`. Em seguida, abra o arquivo e configure com os dados do seu BOT.</p>
 
 ```json
-{
-    "token": "COLE O TOKEN AQUI",
-    "channel": "ID_DO_CANAL"
-}
+
+TOKEN=COLE O TOKEN AQUI
+CHANNEL=ID_DO_CANAL
+
 ```
 
 </details>

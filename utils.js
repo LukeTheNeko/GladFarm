@@ -1,9 +1,3 @@
-/*
-
-  ~ GladBOT by NekoLuke ~
-
-*/
-
 const moment = require('moment')
 const math = require('math');
 
@@ -23,7 +17,7 @@ async function enterRankup(bot) {
         }
     })
 
-    await sleep(3000)
+    await sleep(5000)
     if (bot.currentWindow?.title?.includes('Modos de Jogo')) {
         console.log('Não entrou no fullpvp?')
         enterRankup(bot)

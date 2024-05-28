@@ -99,16 +99,16 @@ const bot_creator = ({ username, pass, home, auth }) => {
     else if (message.content.startsWith(`!topmoney`)) {
       let split = message.content.split(' ');
       if (split.length !== 3) {
-          return;
+        return;
       }
       let username = split[1];
       let target = split[2];
       if (bot.username.toLowerCase() !== username.toLowerCase()) {
-          return;
+        return;
       }
       if (bot.location !== 'home') {
-          channel.send(`${username} Não está na home, aguarde um momento`);
-          return;
+        channel.send(`${username} Não está na home, aguarde um momento`);
+        return;
       }
 
       let messagesReceived = 0;
@@ -118,32 +118,54 @@ const bot_creator = ({ username, pass, home, auth }) => {
       bot.on('message', handleMessage);
 
       function handleMessage(message) {
-          if (gladmcDetected) {
-              messagesReceived++;
-              if (messagesReceived > 1 && messagesReceived <= 11) {
-                  collectedMessages += `[GladMC] ${message}\n`;
-              } else if (messagesReceived === 12) {
-                  bot.removeListener('message', handleMessage);
-                  const embed = new EmbedBuilder()
-                      .setTitle('Jogadores com mais dinheiro do GladMC')
-                      .setColor('#00FF00')
-                      .setDescription(collectedMessages)
-                      .setThumbnail('https://yt3.googleusercontent.com/F-mwc-JCMKxbvO_OnOUY2V8QGK4VsoBiUGV_4DHKBVUWUrqPoJJLBfau-XfxVtNbZx2dAl4r9Q=s900-c-k-c0x00ffffff-no-rj')
-                      .setTimestamp()
-                      .setFooter({ text: 'GladBOT by LukeTheNeko', iconURL: 'https://gladmc.com/uploads/logo_gladiador_gladmc.png' });
+        if (gladmcDetected) {
+          messagesReceived++;
+          if (messagesReceived > 1 && messagesReceived <= 11) {
+            collectedMessages += `[GladMC] ${message}\n`;
+          } else if (messagesReceived === 12) {
+            bot.removeListener('message', handleMessage);
+            const embed = new EmbedBuilder()
+              .setTitle('Jogadores com mais dinheiro do GladMC')
+              .setColor('#00FF00')
+              .setDescription(collectedMessages)
+              .setThumbnail('https://yt3.googleusercontent.com/F-mwc-JCMKxbvO_OnOUY2V8QGK4VsoBiUGV_4DHKBVUWUrqPoJJLBfau-XfxVtNbZx2dAl4r9Q=s900-c-k-c0x00ffffff-no-rj')
+              .setTimestamp()
+              .setFooter({ text: 'GladBOT by LukeTheNeko', iconURL: 'https://gladmc.com/uploads/logo_gladiador_gladmc.png' });
 
-                  channel.send({ embeds: [embed] });
-              }
-          } else if (message.toString().startsWith('[GladMC] ')) {
-              gladmcDetected = true;
-              messagesReceived++;
-              if (messagesReceived > 1) {
-                  collectedMessages += `[GladMC] ${message.toString().substring(8)}\n`;
-              }
+            channel.send({ embeds: [embed] });
           }
+        } else if (message.toString().startsWith('[GladMC] ')) {
+          gladmcDetected = true;
+          messagesReceived++;
+          if (messagesReceived > 1) {
+            collectedMessages += `[GladMC] ${message.toString().substring(8)}\n`;
+          }
+        }
       }
       bot.chat(`/money top`);
-  }
+    }
+
+    else if (message.content.startsWith(`!balance`)) {
+      let split = message.content.split(' ')
+      if (split[1] == bot.username || split[1] == 'all') {
+        if (bot.location !== 'home') {
+          channel.send(`${username} não está na home, aguarde um momento`)
+          return;
+        }
+        else {
+          let index = split.length - 2
+          split = split.splice(2, index)
+          split = split.join(' ')
+          bot.chat('/money balance')
+          bot.once('message', (message) => {
+            if (message.toString().startsWith('[GladMC] ')) {
+              const moneyMessage = message.toString().substring(8);
+              channel.send(` [GladMC] ${username}${moneyMessage}`);
+            }
+          });
+        }
+      }
+    }
 
     // Verifica o money de outra pessoa
     else if (message.content.startsWith(`!vermoney`)) {
